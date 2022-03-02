@@ -3,5 +3,7 @@ paras:
   flanking: 100000
   maping_quality: xx
 
-work_dir: "/path/to/your/workdir/"
+work_dir: "/path/to/your"
+primary_dir: ""
+contig_dir: ""
 ref_path: "/data/DATA/Reference/human/T2TY/chm13.draft_v1.1_GRCh38_chrY.fasta" # if scaffolding is needed

@@ -11,8 +11,9 @@
 ## * get gaps from seqtk cutN
 
 import random
+import pysam
 
-configfile: "scaffold.yaml"
+# configfile: "scaffold.yaml"
 
 minimap2 = "/data/home/pengjia/mybin/minimap2"
 samtools = "/data/home/pengjia/miniconda3/envs/default/bin/samtools"
@@ -23,12 +24,12 @@ minidot = "/data/home/pengjia/mysoftware/assm/miniasm/minidot"
 jellyfish = "/data/home/pengjia/miniconda3/envs/assm/bin/jellyfish"
 ragtag = "/data/home/pengjia/miniconda3/envs/assm/bin/ragtag.py"
 seqtk = "/data/home/pengjia/miniconda3/envs/assm/bin/seqtk"
-
-dir_data = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/hap_assm_post/scaffolds_PJ_new_200K_prefix/"
-dir_data = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/04_gap_close_v1.1/"
-dir_primary = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/04_gap_close_v1.1/primary/"
-dir_contigs = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/04_gap_close_v1.1/contigs/"
-dir_assembly_ragtag = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/03_contigs_eval/ragtag/"
+#
+# dir_data = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/hap_assm_post/scaffolds_PJ_new_200K_prefix/"
+# dir_data = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/04_gap_close_v1.1/"
+# dir_primary = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/04_gap_close_v1.1/primary/"
+# dir_contigs = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/04_gap_close_v1.1/contigs/"
+# dir_assembly_ragtag = "/data/home/pengjia/Project_Human_DATA/ChineseQuartet/Assembly/assm_res/03_contigs_eval/ragtag/"
 segment_length = 100
 prefix_len = 200000
 suffix_len = 200000
@@ -36,33 +37,31 @@ suffix_len = 200000
 
 def get_pri(wildcards):
     # tool = config["gap_conf"][wildcards.assm][wildcards.hap]["primary"]
-    return dir_assembly_ragtag + "{assm}.{hap}.{tool}.ragtag.scaffold.pj.fa".format(assm=wildcards.assm,
-        hap=wildcards.hap,tool=wildcards.tool_pri)
+    return config["gap_conf"][wildcards.assm]["primary"][wildcards.tool_pri]
 
 
 def get_contig(wildcards):
-    return dir_assembly_ragtag + "{assm}.{hap}.{tool}.ragtag.corContigs.pj.fa".format(assm=wildcards.assm,
-        hap=wildcards.hap,tool=wildcards.tool_contig)
+    return config["gap_conf"][wildcards.assm]["contigs"][wildcards.tool_contig]
 
 
 # def get_fq(wildcards):
 #     return config["contigs"][wildcards.assm]["fq"]
-
-tool_contigs = []
-tool_primary = []
-for assm, assm_info in config["gap_conf"].items():
-    for hap, hap_info in assm_info.items():
-        for tool in hap_info["contigs"]:
-            tool_contigs.append(tool)
-        for tool in hap_info["primary"]:
-            tool_primary.append(tool)
-
-assms = list(config["gap_conf"].keys())
-wildcard_constraints:
-    assm="|".join(assms),
-    hap="hap1|hap2|collapsed|h1|h2",
-    tool_pri="|".join(tool_primary),
-    tool_contig="|".join(tool_contigs)
+#
+# tool_contigs = []
+# tool_primary = []
+# for assm, assm_info in config["gap_conf"].items():
+#     for hap, hap_info in assm_info.items():
+#         for tool in hap_info["contigs"]:
+#             tool_contigs.append(tool)
+#         for tool in hap_info["primary"]:
+#             tool_primary.append(tool)
+#
+# assms = list(config["gap_conf"].keys())
+# wildcard_constraints:
+#     assm="|".join(assms),
+#     hap="hap1|hap2|collapsed|h1|h2",
+#     tool_pri="|".join(tool_primary),
+#     tool_contig="|".join(tool_contigs)
 
 
 # tool="|".join(config[""])
@@ -75,15 +74,15 @@ wildcard_constraints:
 #     for assm, assm_info in config["contigs"].items():
 #         for hap, hap_info in assm_info.items():
 #             for tool in hap_info["contig"]:
-#                 res.append(dir_data + "contigs/{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.ok".format(
+#                 res.append(dir_data + "contigs/{assm}.{tool}/{assm}.{tool}.ok".format(
 #                     assm=assm,hap=hap,tool=tool))
-#                 res.append(dir_data + "bwa_bams/{assm}.{hap}.{tool}.sort.bam".format(
+#                 res.append(dir_data + "bwa_bams/{assm}.{tool}.sort.bam".format(
 #                     assm=assm,hap=hap,tool=tool))
-#                 res.append(dir_data + "gaps/{assm}.{hap}.{tool}.gaps.info".format(
+#                 res.append(dir_data + "gaps/{assm}.{tool}.gaps.info".format(
 #                     assm=assm,hap=hap,tool=tool))
-#                 res.append(dir_data + "close/{assm}.{hap}.{tool}.map".format(
+#                 res.append(dir_data + "close/{assm}.{tool}.map".format(
 #                     assm=assm,hap=hap,tool=tool))
-# res.append(dir_data + "new_asm/{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.fa".format(
+# res.append(dir_data + "new_asm/{assm}.{tool}/{assm}.{tool}.fa".format(
 #     assm=assm,hap=hap,tool=tool))
 # return res
 
@@ -92,30 +91,30 @@ wildcard_constraints:
 #     res = []
 #     for assm, assm_info in config["contigs"].items():
 #         for hap, hap_info in assm_info.items():
-#             res.append(dir_data + "paired_fq/{assm}.{hap}.L.fq".format(assm=assm,hap=hap))
+#             res.append(dir_data + "paired_fq/{assm}.L.fq".format(assm=assm,hap=hap))
 #     return res
 
 
-def get_all(wildcards):
-    res = []
-    for assm, assm_info in config["gap_conf"].items():
-        for hap, hap_info in assm_info.items():
-            for tool in hap_info["primary"]:
-                res.append(dir_data + "final/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.closeGap.fa".format(
-                    assm=assm,hap=hap,tool_pri=tool))
-    return res
-
-
-rule all:
-    input:
-        get_all
+# def get_all(wildcards):
+#     res = []
+#     for assm, assm_info in config["gap_conf"].items():
+#         for hap, hap_info in assm_info.items():
+#             for tool in hap_info["primary"]:
+#                 res.append(dir_data + "final/{assm}.{tool_pri}/{assm}.{tool_pri}.closeGap.fa".format(
+#                     assm=assm,hap=hap,tool_pri=tool))
+#     return res
+#
+#
+# rule all:
+#     input:
+#         get_all
 
 
 # get_bwa()
-# expand(dir_data + "kmer/{assm}.{hap}.kmer.fasta",assm="ChineseQuartet",hap=["hap1", "hap2"]),
-# expand(dir_data + "kmer/{assm}.{hap}.kmer.bam",assm="ChineseQuartet",hap=["hap1", "hap2"]),
-# expand(dir_data + "paired_sunk/{assm}.{hap}.L.fq",assm="ChineseQuartet",hap=["hap1", "hap2"]),
-# expand(dir_data + "closed/{assm}.{hap}/{assm}.{hap}.ragtag.closeGap.fa",assm="ChineseQuartet",
+# expand(dir_data + "kmer/{assm}.kmer.fasta",assm="ChineseQuartet",hap=["hap1", "hap2"]),
+# expand(dir_data + "kmer/{assm}.kmer.bam",assm="ChineseQuartet",hap=["hap1", "hap2"]),
+# expand(dir_data + "paired_sunk/{assm}.L.fq",assm="ChineseQuartet",hap=["hap1", "hap2"]),
+# expand(dir_data + "closed/{assm}/{assm}.ragtag.closeGap.fa",assm="ChineseQuartet",
 #     hap=["hap1", "hap2", "collapsed"]),
 
 
@@ -139,10 +138,10 @@ def get_contig_fa(wildcards):
 
 rule jellyfish:
     input:
-        fa=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
-        fai=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa.fai"
+        fa=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
+        fai=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.fai"
     output:
-        kmer=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.fasta",
+        kmer=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.fasta",
     threads: 20
     run:
         js = str(output.kmer)[:-5] + "js"
@@ -162,27 +161,27 @@ rule jellyfish:
 #
 # rule cutN:
 #     input:
-#         fa=dir_data + "contigs/{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.scaffold.fa",
+#         fa=dir_data + "contigs/{assm}.{tool}/{assm}.{tool}.scaffold.fa",
 #     output:
-#         fa=dir_data + "contigs/{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.fa",
+#         fa=dir_data + "contigs/{assm}.{tool}/{assm}.{tool}.fa",
 #     run:
 #         shell("{seqtk} cutN -n 10 {input.fa} >{output.fa}")
 
 rule get_gaps:
     input:
-        dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
+        config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
     output:
-        dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.gap.bed",
+        config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.gap.bed",
     run:
         shell("{seqtk} cutN -n1 -g {input} >{output}")
 
 rule sunk_location:
     input:
-        kmer=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.fasta",
-        ref=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
-        ref_fai=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa.fai"
+        kmer=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.fasta",
+        ref=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
+        ref_fai=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.fai"
     output:
-        kmer=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.bam",
+        kmer=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.bam",
     threads: 48
     run:
         ref = str(input.ref)
@@ -193,14 +192,14 @@ rule sunk_location:
 
 rule get_sunk_between_gaps:
     input:
-        ref=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
-        ref_fai=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa.fai",
-        gap=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.gap.bed",
-        kmer=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.bam",
-        kmer_index=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.bam.bai",
+        ref=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
+        ref_fai=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.fai",
+        gap=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.gap.bed",
+        kmer=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.bam",
+        kmer_index=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.bam.bai",
     output:
-        fq1=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.L.fq",
-        fq2=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.R.fq",
+        fq1=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.L.fq",
+        fq2=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.R.fq",
     priority: 50
     run:
         import pysam
@@ -262,11 +261,11 @@ rule get_sunk_between_gaps:
 
 rule sunk_align_to_contig:
     input:
-        ref=dir_contigs + "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa",
-        ref_index=dir_contigs + "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa.fai",
-        fq=dir_data + "kmer/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.kmer.{side}.fq",
+        ref=config["contig_dir"] + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa",
+        ref_index=config["contig_dir"] + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa.fai",
+        fq=config["work_dir"] + "kmer/{assm}.{tool_pri}/{assm}.{tool_pri}.kmer.{side}.fq",
     output:
-        dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.{side}.{tool_contig}.sort.bam"
+        config["work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.{side}.{tool_contig}.sort.bam"
     threads: 48
     run:
         ref = str(input.ref)
@@ -278,13 +277,15 @@ rule sunk_align_to_contig:
 
 rule get_best_sunk_two:
     input:
-        bam_L=dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.L.{tool_contig}.sort.bam",
-        bai_L=dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.L.{tool_contig}.sort.bam.bai",
-        bam_R=dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.R.{tool_contig}.sort.bam",
-        bai_R=dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.R.{tool_contig}.sort.bam.bai",
+        bam_L=config["work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.L.{tool_contig}.sort.bam",
+        bai_L=config[
+                  "work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.L.{tool_contig}.sort.bam.bai",
+        bam_R=config["work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.R.{tool_contig}.sort.bam",
+        bai_R=config[
+                  "work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.R.{tool_contig}.sort.bam.bai",
     output:
-        dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.{tool_contig}.best.map",
-    # dir_data + "sunk/{assm}.{hap}.{tool}.best.map"
+        # config["work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.{tool_contig}.best.map",
+        config["work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.{tool_contig}.best.map"
     threads: 1
     run:
         import pysam
@@ -400,9 +401,9 @@ rule get_best_sunk_two:
 
 # rule bam_sort:
 #     input:
-#         dir_data + "sunk/{assm}.{hap}.{tool}.{side}.best.sunk.bam",
+#         dir_data + "sunk/{assm}.{tool}.{side}.best.sunk.bam",
 #     output:
-#         dir_data + "sunk/{assm}.{hap}.{tool}.{side}.best.sunk.sort.bam",
+#         dir_data + "sunk/{assm}.{tool}.{side}.best.sunk.sort.bam",
 #     run:
 #         shell("{samtools} sort -m 2G -T {output}_tmp -o {output} -O BAM  {input}")
 
@@ -416,38 +417,46 @@ def get_reverse_complementary(my_str):
 
 
 def get_contigs_map(wildcards):
-    tools = list(config["gap_conf"][wildcards.assm][wildcards.hap]["contigs"])
-    return expand(dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool_contig}/{assm}.{hap}.{tool_pri}.{tool_contig}.best.map",assm=wildcards.assm,hap=wildcards.hap,
-        tool_contig=tools,tool_pri=wildcards.tool_pri)
+    tools = list(config["gap_conf"][wildcards.assm]["contigs"])
+    print(config["work_dir"])
+    print(wildcards.assm)
+    print(wildcards.tool_pri)
+    print(tools)
+    return expand(config["work_dir"] + "maps/{assm}.{tool_pri}/{tool_contig}/{assm}.{tool_pri}.{tool_contig}.best.map",
+        assm=wildcards.assm,tool_contig=tools,tool_pri=wildcards.tool_pri)
 
 
 def get_contigs_fa(wildcards):
-    tools = list(config["gap_conf"][wildcards.assm][wildcards.hap]["contigs"])
-    return expand(dir_contigs + "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa",assm=wildcards.assm,hap=wildcards.hap,tool_contig=tools)
+    tools = list(config["gap_conf"][wildcards.assm]["contigs"])
+    return expand(
+        config[
+            "contig_dir"] + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa.contig_index.ok",assm=wildcards.assm,tool_contig=tools)
 
 
 rule merged_and_get_fa:
     input:
         closer=get_contigs_map,
-        scafold=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
+        scafold=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.pri_index.ok",
+        scafold_index=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
         contigs=get_contigs_fa
     output:
-        dir_data + "final/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.closeGap.fa"
-    # dir_data+ "sunk/{assm}.{hap}.{tool}.best.map"
+        config["work_dir"] + "final/{assm}.{tool_pri}/{assm}.{tool_pri}.closeGap.fa"
+    # dir_data+ "sunk/{assm}.{tool}.best.map"
     run:
         import pysam
 
         scaffold_fa = pysam.Fastafile(str(input.scafold))
-        tools = list(config["gap_conf"][wildcards.assm][wildcards.hap]["contigs"])
+        tools = list(config["gap_conf"][wildcards.assm]["contigs"])
         tools_samfile = {
-            tool: pysam.Fastafile(str(dir_contigs + "{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.fa").format(
-                assm=wildcards.assm,hap=wildcards.hap,tool=tool
-            )) for tool in tools}
+            tool: pysam.Fastafile(str(config["contig_dir"] + f"{wildcards.assm}.{tool}/{wildcards.assm}.{tool}.fa")) for
+            tool
+            in tools}
         gaps_info_all = {}
         gap_filling_score = {}
         for tool in tools:
-            for line in open(dir_data + "maps/{assm}.{hap}.{tool_pri}/{tool}/{assm}.{hap}.{tool_pri}.{tool}.best.map".format(
-                    assm=wildcards.assm,hap=wildcards.hap,tool=tool,tool_pri=wildcards.tool_pri)):
+            for line in open(
+                    config["work_dir"] + f"maps/{wildcards.assm}.{wildcards.tool_pri}/{tool}/{wildcards.assm}."
+                                         f"{wildcards.tool_pri}.{tool}.best.map"):
                 scaffold_id, scaffold_start, scafford_end, contig_id, contig_start, contig_end, direction, gap_name, score = \
                     line[:-1].split("\t")
                 if gap_name not in gaps_info_all:
@@ -462,10 +471,8 @@ rule merged_and_get_fa:
                                                  contig_end, direction, tool, score]
         gaps_info = {}
         for gap_name in gaps_info_all:
-            # print(gaps_info_all[gap_name])
             this_gap_info = gaps_info_all[gap_name]
             gaps_info[gap_name] = gaps_info_all[gap_name][max(this_gap_info,key=lambda i: this_gap_info[i][-1])]
-
         new_gaps = {}
         for gap in gaps_info:
             gap_chr = gaps_info[gap][0]
@@ -533,12 +540,12 @@ rule merged_and_get_fa:
 
 # rule res_vis:
 #     input:
-#         scafold= dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
-#         scafold_index= dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa.fai",
-#         contig=dir_contigs + "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa",
-#         contig_index=dir_contigs+ "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa.fai"
+#         scafold= dir_primary + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
+#         scafold_index= dir_primary + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.fai",
+#         contig=dir_contigs + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa",
+#         contig_index=dir_contigs+ "{assm}.{tool_contig}/{assm}.{tool_contig}.fa.fai"
 #     output:
-#         paf=dir_data + "pafs/{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.{tool_contig}.paf",
+#         paf=dir_data + "pafs/{assm}.{tool_pri}/{assm}.{tool_pri}.{tool_contig}.paf",
 #     threads: 48
 #     run:
 #         shell("{minimap2} -x asm20 -m 10000 -z 10000,50 -r 50000 --end-bonus=100 --secondary=no -t {threads} --eqx -Y "
@@ -557,9 +564,9 @@ rule samtools_index:
 #
 # rule bwa_index:
 #     input:
-#         dir_data + "contigs/{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.fa",
+#         dir_data + "contigs/{assm}.{tool}/{assm}.{tool}.fa",
 #     output:
-#         bwa=dir_data + "contigs/{assm}.{hap}.{tool}/{assm}.{hap}.{tool}.ok"
+#         bwa=dir_data + "contigs/{assm}.{tool}/{assm}.{tool}.ok"
 #     run:
 #         # output_pre = str(output.bwa)[:-3]
 #         # shell("ln -sf {input} {output_pre}.fa")
@@ -578,22 +585,26 @@ rule bwa_index_primary:
     input:
         get_pri
     output:
-        fa=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa",
-        fai=dir_primary + "{assm}.{hap}.{tool_pri}/{assm}.{hap}.{tool_pri}.fa.fai"
+        fa=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa",
+        fai=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.fai",
+        ok=config["primary_dir"] + "{assm}.{tool_pri}/{assm}.{tool_pri}.fa.pri_index.ok"
     run:
         shell("ln {input} {output.fa}")
         shell("{bwa} index {output.fa}")
         shell("{samtools} faidx {output.fa}")
+        shell("touch {output.ok}")
 
 
 rule bwa_index_contig:
     input:
         get_contig
     output:
-        fa=dir_contigs + "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa",
-        fai=dir_contigs + "{assm}.{hap}.{tool_contig}/{assm}.{hap}.{tool_contig}.fa.fai"
+        fa=config["contig_dir"] + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa",
+        fai=config["contig_dir"] + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa.fai",
+        ok=config["contig_dir"] + "{assm}.{tool_contig}/{assm}.{tool_contig}.fa.contig_index.ok"
     run:
         # fa_out = str(output)[:-4]
         shell("ln {input} {output.fa}")
         shell("{bwa} index {output.fa}")
         shell("{samtools} faidx {output.fa}")
+        shell("touch {output.ok}")

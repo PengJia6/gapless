@@ -1,0 +1,13 @@
+Building DAG of jobs...
+MissingInputException in line 436 of /data/home/pengjia/gapless/gapless/rules/gapless.smk:
+Missing input files for rule merged_and_get_fa:
+/path/to/your/maps/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0/hicanu/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0.hicanu.best.map
+/path/to/your/maps/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0/hifiasm_0.14.2/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0.hifiasm_0.14.2.best.map
+/path/to/your/maps/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0/flye/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0.flye.best.map
+/path/to/your/maps/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0/nextdenovo/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0.nextdenovo.best.map
+/path/to/your/contigs/RY02_Wei_Male_CNUGM0001.flye/RY02_Wei_Male_CNUGM0001.flye.fa.contig_index.ok
+/path/to/your/maps/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0/hifiasm_0.15.5/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0.hifiasm_0.15.5.best.map
+/path/to/your/contigs/RY02_Wei_Male_CNUGM0001.hicanu/RY02_Wei_Male_CNUGM0001.hicanu.fa.contig_index.ok
+/path/to/your/contigs/RY02_Wei_Male_CNUGM0001.hifiasm_0.15.5/RY02_Wei_Male_CNUGM0001.hifiasm_0.15.5.fa.contig_index.ok
+/path/to/your/contigs/RY02_Wei_Male_CNUGM0001.nextdenovo/RY02_Wei_Male_CNUGM0001.nextdenovo.fa.contig_index.ok
+/path/to/your/contigs/RY02_Wei_Male_CNUGM0001.hifiasm_0.14.2/RY02_Wei_Male_CNUGM0001.hifiasm_0.14.2.fa.contig_index.ok
