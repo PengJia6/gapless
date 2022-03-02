@@ -1,0 +1,7 @@
+paras:
+  scaffolding: True
+  flanking: 100000
+  maping_quality: xx
+
+work_dir: "/path/to/your/workdir/"
+ref_path: "/data/DATA/Reference/human/T2TY/chm13.draft_v1.1_GRCh38_chrY.fasta" # if scaffolding is needed

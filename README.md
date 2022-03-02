@@ -1,7 +1,10 @@
-# gapless
-Pipeline for assemblies merging
+# Gapless
+
+Gapless is devoleped from genome assemblies merging in hybrid assembly stratge 
 
 
 
-COntact: 
+## Contact:
+
+* Peng Jia at Xi'an Jiaotong University (pengjia1110@163.com and pengjia@stu.xjtu.edu.cn)
 

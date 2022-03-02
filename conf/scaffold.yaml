@@ -1,0 +1,44 @@
+gap_conf:
+  RY02_Wei_Male_CNUGM0001:
+    collapsed:
+      primary:
+        hifiasm_0.16.0: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.hifiasm0.16.0.ngs.polish.breakhic.fa"
+      contigs:
+        hifiasm_0.16.0: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.hifiasm0.16.0.ngs.polish.breakhic.fa"
+        hifiasm_0.14.2: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.hifiasm0.14.2.ngs.polish.breakhic.fa"
+        hifiasm_0.15.5: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.hifiasm0.15.5.ngs.polish.breakhic.fa"
+        flye: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.flye.ngs.polish.breakhic.fa"
+        hicanu: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.hicanu.ngs.polish.breakhic.fa"
+        nextdenovo: "/data/home/xfyang/CHN_Multi_Ethnic/RY02_Wei_Male_CNUGM0001/breakhicRes/RY02_Wei_Male_CNUGM0001.nextdenovo.ngs.polish.breakhic.fa"
+  RY06_KErK_Female_CNKGF0001:
+    collapsed:
+      primary:
+        hifiasm_0.16.0: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hifiasm0.16.0.ngs.polish.breakhic.fa"
+#        hifiasm_0.14.2: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hifiasm0.14.2.ngs.polish.breakhic.fa"
+#        hifiasm_0.15.5: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hifiasm0.15.5.ngs.polish.breakhic.fa"
+#        flye: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.flye.ngs.polish.breakhic.fa"
+#        hicanu: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hicanu.ngs.polish.breakhic.fa"
+#        nextdenovo: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.nextdenovo.ngs.polish.breakhic.fa"
+      contigs:
+        hifiasm_0.16.0: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hifiasm0.16.0.ngs.polish.breakhic.fa"
+        hifiasm_0.14.2: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hifiasm0.14.2.ngs.polish.breakhic.fa"
+        hifiasm_0.15.5: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hifiasm0.15.5.ngs.polish.breakhic.fa"
+        flye: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.flye.ngs.polish.breakhic.fa"
+        hicanu: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.hicanu.ngs.polish.breakhic.fa"
+        nextdenovo: "/data/home/xfyang/CHN_Multi_Ethnic/RY06_KErK_Female_CNKGF0001/breakhicRes/RY06_KErK_Female_CNKGF0001.nextdenovo.ngs.polish.breakhic.fa"
+  RY07_Ha_Female_CNKZF0001:
+    collapsed:
+      primary:
+        hifiasm_0.16.0: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hifiasm0.16.0.ngs.polish.breakhic.fa"
+#        hifiasm_0.14.2: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hifiasm0.14.2.ngs.polish.breakhic.fa"
+#        hifiasm_0.15.5: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hifiasm0.15.5.ngs.polish.breakhic.fa"
+#        flye: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.flye.ngs.polish.breakhic.fa"
+#        hicanu: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hicanu.ngs.polish.breakhic.fa"
+#        nextdenovo: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.nextdenovo.ngs.polish.breakhic.fa"
+      contigs:
+        hifiasm_0.16.0: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hifiasm0.16.0.ngs.polish.breakhic.fa"
+        hifiasm_0.14.2: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hifiasm0.14.2.ngs.polish.breakhic.fa"
+        hifiasm_0.15.5: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hifiasm0.15.5.ngs.polish.breakhic.fa"
+        flye: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.flye.ngs.polish.breakhic.fa"
+        hicanu: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.hicanu.ngs.polish.breakhic.fa"
+        nextdenovo: "/data/home/xfyang/CHN_Multi_Ethnic/RY07_Ha_Female_CNKZF0001/breakhicRes/RY07_Ha_Female_CNKZF0001.nextdenovo.ngs.polish.breakhic.fa"
