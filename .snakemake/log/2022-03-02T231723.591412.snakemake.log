@@ -1,4 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 22 of /data/home/pengjia/gapless/gapless/Snakefile:
-Missing input files for rule all:
-/path/to/your/final/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0/RY02_Wei_Male_CNUGM0001.hifiasm_0.16.0.closeGap.fa
