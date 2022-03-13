@@ -1,6 +1,6 @@
 # Gapless
 
-Gapless is developed from genome assemblies merging with a hybrid assembly strategy 
+Gapless is developed for genome assemblies merging with a hybrid assembly strategy 
 
 
 ## Authors
@@ -20,23 +20,43 @@ Peng Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn).
 
 To be finished!
 
+---
+## Dependence
+
+* System: Unix like system (test on ubuntu and centOS)
+* Language: Python and snakemake
+* Packages: snakemake, pysam, numpy pandas 
+* Software: [bwa](https://github.com/lh3/bwa), [minimap2](https://github.com/lh3/minimap2), [samtools](http://www.htslib.org/), [minidot](https://github.com/thackl/minidot), [jellyfish](https://github.com/gmarcais/Jellyfish), [ragtag](https://github.com/malonge/RagTag), [seqtk](https://github.com/lh3/seqtk)
+
+
+
+
+
+
 
 ---
 ## How to run Gapless?
 
-To be finished!
 
-### Install with pip3   
-  ```shell script
-    conda create -n myenv python>=3.6
-    conda activate myenv
-    pip3 install msisensor_rna-rna
-  ```
-### Install with docker   
-  ```shell script
-      docker pull pengjia1110/msisensor_rna-rna
-      docker run -v /local/path:/docker/path pengjia1110/msisensor_rna-rna msisensor_rna-rna
-  ```
+### 1. Prepare you environment and install dependence   
+
+   You can install the dependent packages and software with conda.     
+
+### 2. Download the pipeline and config the environment
+   First, download the pipeline 
+
+```shell script
+cd /path/to/my/work
+git clone https://github.com/PengJia6/gapless.git
+```
+
+
+
+
+
+  Next, config the 
+
+
 --- 
 ## Input and output
 
