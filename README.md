@@ -6,7 +6,7 @@ Gapless is developed for genome assemblies merging with a hybrid assembly strate
 ## Authors
   * Pengjia (pengjia@stu.xjtu.edu.cn)
 
- ---
+
 ## License
 
 Gapless is free for non-commercial use
@@ -15,12 +15,12 @@ commercial version of the software is available and licensed through
 Xi’an Jiaotong University. For more information, please contact with
 Peng Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn).
 
----
+
 ## Scopes of Gapless
 
 To be finished!
 
----
+
 ## Dependence
 
 * System: Unix like system (test on ubuntu and centOS)
@@ -34,7 +34,7 @@ To be finished!
 
 
 
----
+
 ## How to run Gapless?
 
 
@@ -72,7 +72,7 @@ snakemake -s /path/to/gapless/gapless/Snakefile -j 10 -k --ri
  
 ## Input and output
 
----
+
 
 TODO
 
