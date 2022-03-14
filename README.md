@@ -43,24 +43,39 @@ To be finished!
    You can install the dependent packages and software with conda.     
 
 ### 2. Download the pipeline and config the environment
-   First, download the pipeline 
+   Download the pipeline. 
 
 ```shell script
-cd /path/to/my/work
+cd /path/to/gapless
 git clone https://github.com/PengJia6/gapless.git
+```
+Changed the software or packages path in conf/software.smk.  
+Changed the parameters of the pipeline in conf/config.yaml.
+Changed the input path of you scaffolds and contigs in conf/scaffold.yaml.
+
+### 3. Run the pipeline. 
+
+```shell
+cd /path/to/gapless
+snakemake  -s Snakefile -j 10 -k --ri -k 
+```
+
+If you want to run the pipeline in other directory, please copy the conf file in your directory and run with following command:
+
+```shell
+cd /m/work/directory
+cp -r /path/to/gapless/gapless/conf .
+snakemake -s /path/to/gapless/gapless/Snakefile -j 10 -k --ri 
 ```
 
 
-
-
-
-  Next, config the 
-
-
---- 
+ 
 ## Input and output
 
 ---
+
+TODO
+
 
 ## Contact
 
