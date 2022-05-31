@@ -44,9 +44,9 @@ Peng Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn).
 cd /path/to/gapless
 git clone https://github.com/PengJia6/gapless.git
 ```
-Changed the software or packages path in conf/software.smk.  
-Changed the parameters of the pipeline in conf/config.yaml.
-Changed the input path of you scaffolds and contigs in conf/scaffold.yaml.
+* Changed the software or packages path in conf/software.smk.  
+* Changed the parameters of the pipeline in conf/config.yaml.  
+* Changed the input path of you scaffolds and contigs in conf/scaffold.yaml.
 
 ### 3. Run the pipeline. 
 
