@@ -20,8 +20,8 @@ Peng Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn).
 
 * System: Unix like system (test on ubuntu and centOS)
 * Language: Python and snakemake
-* Packages: snakemake, pysam, numpy pandas 
-* Software: [bwa](https://github.com/lh3/bwa), [minimap2](https://github.com/lh3/minimap2), [samtools](http://www.htslib.org/), [minidot](https://github.com/thackl/minidot), [jellyfish](https://github.com/gmarcais/Jellyfish), [ragtag](https://github.com/malonge/RagTag), [seqtk](https://github.com/lh3/seqtk)
+* Packages: snakemake, pysam, numpy and pandas 
+* Software: [bwa](https://github.com/lh3/bwa), [minimap2](https://github.com/lh3/minimap2), [samtools](http://www.htslib.org/), [minidot](https://github.com/thackl/minidot), [jellyfish](https://github.com/gmarcais/Jellyfish), [ragtag](https://github.com/malonge/RagTag), and [seqtk](https://github.com/lh3/seqtk)
 
 
 
