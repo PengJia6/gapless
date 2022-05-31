@@ -16,11 +16,6 @@ Xi’an Jiaotong University. For more information, please contact with
 Peng Jia (pengjia@stu.xjtu.edu.cn) or Kai Ye (kaiye@xjtu.edu.cn).
 
 
-## Scopes of Gapless
-
-To be finished!
-
-
 ## Dependence
 
 * System: Unix like system (test on ubuntu and centOS)
@@ -68,13 +63,6 @@ cp -r /path/to/gapless/gapless/conf .
 snakemake -s /path/to/gapless/gapless/Snakefile -j 10 -k --ri 
 ```
 
-
- 
-## Input and output
-
-
-
-TODO
 
 
 ## Contact
