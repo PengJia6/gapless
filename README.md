@@ -62,7 +62,8 @@ cd /m/work/directory
 cp -r /path/to/gapless/gapless/conf .
 snakemake -s /path/to/gapless/gapless/Snakefile -j 10 -k --ri 
 ```
-
+ ## Citation
+  Jia P, Dong L, Yang X, Wang B, Wang T, Lin J, Wang S, Zhao X, Xu T, Che Y, et al: Haplotype-resolved assemblies and variant benchmark of a Chinese Quartet. bioRxiv 2022:2022.2009.2008.504083. [PDF](https://www.biorxiv.org/content/10.1101/2022.09.08.504083v1.full.pdf)
 
 
 ## Contact
